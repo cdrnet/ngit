@@ -44,8 +44,8 @@ using System.Runtime.CompilerServices;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 
-[assembly:InternalsVisibleTo ("NGit.Test")]
-[assembly:InternalsVisibleTo ("Tester")]
+[assembly:InternalsVisibleTo ("NGit.Test, PublicKey=00240000048000009400000006020000002400005253413100040000010001006791ef18233891b98dd37cf9440894314eb0f5b68c7364d164abf8eaa840ed1d557f760a1e5a13f8df251c065135e077e4eef6475b80259c79888eb2131bc15cfb02826ee2a0cccdcd03665ecd3a944566f3e0ce9ccabbd94ec37201b28ab1c8d1bc928a993422bfd135a44ad8b7c48cd28501ff7135dfde795e623166119de8")]
+[assembly:InternalsVisibleTo ("Tester, PublicKey=00240000048000009400000006020000002400005253413100040000010001006791ef18233891b98dd37cf9440894314eb0f5b68c7364d164abf8eaa840ed1d557f760a1e5a13f8df251c065135e077e4eef6475b80259c79888eb2131bc15cfb02826ee2a0cccdcd03665ecd3a944566f3e0ce9ccabbd94ec37201b28ab1c8d1bc928a993422bfd135a44ad8b7c48cd28501ff7135dfde795e623166119de8")]
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.
 
