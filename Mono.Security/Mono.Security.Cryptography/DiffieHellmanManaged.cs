@@ -96,9 +96,7 @@ namespace Mono.Security.Cryptography {
 		// initializes the private variables (throws CryptographicException)
 		private void Initialize(BigInteger p, BigInteger g, BigInteger x, int secretLen, bool checkInput) {
 			if (checkInput) {
-                // Under certain circumstances, IsProbablePrime hangs indefinitely or
-                // returns the wrong result.
-				if (/* !p.IsProbablePrime() || */ g <= 0 || g >= p || (x != null && (x <= 0 || x > p - 2)))
+				if (!p.IsProbablePrime() || g <= 0 || g >= p || (x != null && (x <= 0 || x > p - 2)))
 					throw new CryptographicException();
 			}
 			// default is to generate a number as large as the prime this
