@@ -1089,6 +1089,7 @@ namespace Mono.Math {
 #if true
 			public BigInteger Pow (BigInteger a, BigInteger k)
 			{
+#if false
 				BigInteger b = new BigInteger (1);
 				if (k == 0)
 					return b;
@@ -1103,7 +1104,42 @@ namespace Mono.Math {
 						b = Multiply (A, b);
 				}
 				return b;
+#endif
+
+
+                var result = System.Numerics.BigInteger.ModPow(
+                    EncodeBigInteger(a),
+                    EncodeBigInteger(k),
+                    EncodeBigInteger(mod)
+                );
+
+                return DecodeBigInteger(result);
 			}
+
+            private static BigInteger DecodeBigInteger(System.Numerics.BigInteger v)
+            {
+                var bytes = v.ToByteArray();
+
+                if (bytes[bytes.Length - 1] == 0 && (bytes[bytes.Length - 2] & 128) != 0)
+                    Array.Resize(ref bytes, bytes.Length - 1);
+
+                Array.Reverse(bytes);
+
+                return new BigInteger(bytes);
+            }
+
+            private static System.Numerics.BigInteger EncodeBigInteger(BigInteger v)
+            {
+                var bytes = v.GetBytes();
+
+                Array.Reverse(bytes);
+
+                if ((bytes[bytes.Length - 1] & 128) != 0)
+                    Array.Resize(ref bytes, bytes.Length + 1);
+
+                return new System.Numerics.BigInteger(bytes);
+            }
+
 #else
 			public BigInteger Pow (BigInteger b, BigInteger exp)
 			{
